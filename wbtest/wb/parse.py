@@ -2,11 +2,11 @@ import aiohttp
 import asyncio
 from wb.models import File
 
-URL = 'https://wbx-content-v2.wbstatic.net/ru/{}.json'
-
+URL = 'https://wbx-content-v2.wbstatic.net/ru/73512949.json' # старая
+URL = 'https://basket-05.wb.ru/vol735/part73512/73512949/info/ru/card.json'
 
 def parse_item():
-    dok = File.objects.all()[0]
+    dok = File.objects.all()[0] # засадить сюда файл
     path_dok = dok.file.path
     with open(path_dok, "rb") as excel:
         data = excel.read()

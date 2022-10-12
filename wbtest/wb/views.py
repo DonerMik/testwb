@@ -1,4 +1,4 @@
-from rest_framework.parsers import MultiPartParser
+from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -7,10 +7,11 @@ from wb.serializer import FileSerializer
 
 
 class UploadView(APIView):
-    parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser, JSONParser)
 
     def post(self, request):
         serializer = FileSerializer(data=request.data)
+
 
         if not serializer.is_valid():
             return Response(serializer.errors, status=400)
