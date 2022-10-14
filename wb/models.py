@@ -1,5 +1,13 @@
 from django.db import models
 
+from pydantic import BaseModel, Field
+
+
+class DataWB(BaseModel):
+    article: int
+    brand: str
+    title: str
+
 
 class File(models.Model):
     file = models.FileField(upload_to='upload')
